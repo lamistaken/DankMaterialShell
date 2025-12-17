@@ -79,6 +79,18 @@ QtObject {
             }
         }
 
+        // Try to set cursor to a notification within the same group.
+        if (selectedItemType === "notification") {
+            if (selectedFlatIndex >= flatNavigation.length) {
+                selectedFlatIndex = flatNavigation.length - 1;
+            }
+            const item = flatNavigation[selectedFlatIndex];
+            if (item.type === "notification" && item.groupKey === selectedGroupKey) {
+                selectionVersion++;
+                return;
+            }
+        }
+
         // If not found, try to find the same group but select the group header instead
         if (selectedItemType === "notification") {
             for (var j = 0; j < flatNavigation.length; j++) {
@@ -364,7 +376,6 @@ QtObject {
     }
 
     function handleKey(event) {
-        console.info("handleKey index: ", selectedFlatIndex);
         if ((event.key === Qt.Key_Delete || event.key === Qt.Key_Backspace || event.key === Qt.Key_D) && (event.modifiers & Qt.ShiftModifier)) {
             NotificationService.clearAllNotifications();
             rebuildFlatNavigation();
