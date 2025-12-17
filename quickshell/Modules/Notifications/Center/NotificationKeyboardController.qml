@@ -364,7 +364,8 @@ QtObject {
     }
 
     function handleKey(event) {
-        if ((event.key === Qt.Key_Delete || event.key === Qt.Key_Backspace) && (event.modifiers & Qt.ShiftModifier)) {
+        console.info("handleKey index: ", selectedFlatIndex);
+        if ((event.key === Qt.Key_Delete || event.key === Qt.Key_Backspace || event.key === Qt.Key_D) && (event.modifiers & Qt.ShiftModifier)) {
             NotificationService.clearAllNotifications();
             rebuildFlatNavigation();
             if (flatNavigation.length === 0) {
@@ -390,7 +391,7 @@ QtObject {
                     onClose();
                 event.accepted = true;
             }
-        } else if (event.key === Qt.Key_Down || event.key === 16777237) {
+        } else if (event.key === Qt.Key_Down || event.key === 16777237 || event.key === Qt.Key_J) {
             if (!keyboardNavigationActive) {
                 keyboardNavigationActive = true;
                 rebuildFlatNavigation(); // Ensure we have fresh navigation data
@@ -407,7 +408,7 @@ QtObject {
                 selectNext();
                 event.accepted = true;
             }
-        } else if (event.key === Qt.Key_Up || event.key === 16777235) {
+        } else if (event.key === Qt.Key_Up || event.key === 16777235 || event.key === Qt.Key_K) {
             if (!keyboardNavigationActive) {
                 keyboardNavigationActive = true;
                 rebuildFlatNavigation(); // Ensure we have fresh navigation data
@@ -515,13 +516,13 @@ QtObject {
             } else if (event.key === Qt.Key_E) {
                 toggleTextExpanded();
                 event.accepted = true;
-            } else if (event.key === Qt.Key_Delete || event.key === Qt.Key_Backspace) {
+            } else if (event.key === Qt.Key_Delete || event.key === Qt.Key_Backspace || event.key === Qt.Key_D) {
                 clearSelected();
                 event.accepted = true;
-            } else if (event.key === Qt.Key_Tab) {
+            } else if (event.key === Qt.Key_Tab || event.key === Qt.Key_J) {
                 selectNext();
                 event.accepted = true;
-            } else if (event.key === Qt.Key_Backtab) {
+            } else if (event.key === Qt.Key_Backtab || event.key === Qt.Key_K) {
                 selectPrevious();
                 event.accepted = true;
             } else if (event.key >= Qt.Key_1 && event.key <= Qt.Key_9) {
