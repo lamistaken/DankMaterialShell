@@ -799,7 +799,7 @@ Singleton {
         return send({
             "Action": {
                 "Screenshot": {
-                    "show_pointer": true,
+                    "show_pointer": false,
                     "path": path
                 }
             }
@@ -816,7 +816,7 @@ Singleton {
             "Action": {
                 "ScreenshotScreen": {
                     "write_to_disk": true,
-                    "show_pointer": true,
+                    "show_pointer": false,
                     "path": path
                 }
             }
@@ -833,7 +833,7 @@ Singleton {
             "Action": {
                 "ScreenshotWindow": {
                     "write_to_disk": true,
-                    "show_pointer": true,
+                    "show_pointer": false,
                     "path": path
                 }
             }
