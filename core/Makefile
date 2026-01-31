@@ -6,7 +6,7 @@ BUILD_DIR=bin
 PREFIX ?= /usr/local
 INSTALL_DIR=$(PREFIX)/bin
 
-GO=go
+GO=/usr/local/go/bin/go
 GOFLAGS=-ldflags="-s -w"
 
 # Version and build info
